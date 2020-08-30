@@ -20,6 +20,12 @@
       "type": "string",
       "format": "uri"
     },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "help": {
       "$ref": "#/definitions/localizedText"
     },

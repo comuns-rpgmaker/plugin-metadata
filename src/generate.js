@@ -77,7 +77,7 @@ function transformParam(param, { command, parent, language }) {
         `@text ${localized(param.text, language)}`,
         `@desc ${localized(param.description, language)}`
     );
-    
+
     if (param.default) result.push(`@default ${param.default}`);
 
     if (param.children) {
@@ -126,11 +126,15 @@ function transformStructs(structs, language) {
 function transform(metadata, language) {
     let result = [
         `@target ${metadata.target}`,
-        `@author ${metadata.author}`,
-        `@url ${metadata.url}`,
+        `@author ${metadata.author}`
+    ];
+
+    if (metadata.url) result.push(`@url ${metadata.url}`);
+
+    result.push(
         `@description ${localized(metadata.description, language)}`,
         `@help ${localized(metadata.help, language)}`
-    ];
+    );
 
     if (metadata.base) {
         metadata.base.forEach(plugin => result.push(`@base ${plugin}`));
@@ -179,13 +183,18 @@ function formatStructs(tags, language) {
     }, '');
 }
 
-module.exports = async function generate(file, output, language = '') {
+module.exports = async function generate(file, output) {
     const metadata = await validate(file);
 
-    const tags = transform(metadata, language);
-    
-    const result = formatMain(tags.main, language)
-        + formatStructs(tags.structs, language);
+    let result = '';
+    const languages = ['', ...(metadata.languages || [])] ;
+
+    languages.forEach(language => {
+        const tags = transform(metadata, language);
+
+        result += formatMain(tags.main, language)
+            + formatStructs(tags.structs, language);
+    });
 
     if (output) {
         await fs.writeFile(output, result);
