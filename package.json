@@ -1,0 +1,30 @@
+{
+  "name": "@comuns-rpgmaker/plugin-metadata",
+  "version": "0.1.0",
+  "description": "Automated tool for plugin metadata schema validation and generation",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "files": [
+    "schema"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/comuns-rpgmaker/plugin-metadata"
+  },
+  "keywords": [
+    "rpgmaker",
+    "rpgmakermz",
+    "comuns-rpgmaker",
+    "json",
+    "schema",
+    "metadata"
+  ],
+  "author": "comuns-rpgmaker",
+  "license": "Zlib",
+  "dependencies": {
+    "ajv": "^6.12.4",
+    "yaml": "^1.10.0",
+    "yargs": "^15.4.1"
+  }
+}
