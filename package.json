@@ -6,6 +6,7 @@
     "start": "node index.js"
   },
   "files": [
+    "src",
     "schema"
   ],
   "bin": {
