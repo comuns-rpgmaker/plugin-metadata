@@ -8,6 +8,9 @@
   "files": [
     "schema"
   ],
+  "bin": {
+    "mz-mtdt": "index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/comuns-rpgmaker/plugin-metadata"
