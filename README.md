@@ -1,5 +1,7 @@
 # Plugin Metadata
 
+![Docs](https://github.com/comuns-rpgmaker/plugin-metadata/workflows/Docs/badge.svg)
+
 Plugin metadata validation and generation tool.
 
 ## Getting started
