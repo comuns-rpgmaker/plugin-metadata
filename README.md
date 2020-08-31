@@ -1,6 +1,7 @@
 # Plugin Metadata
 
 ![Docs](https://github.com/comuns-rpgmaker/plugin-metadata/workflows/Docs/badge.svg)
+![Node.js Package](https://github.com/comuns-rpgmaker/plugin-metadata/workflows/Node.js%20Package/badge.svg)
 
 Plugin metadata validation and generation tool.
 
