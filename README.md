@@ -55,7 +55,7 @@ We get the following output:
  * @target MZ
  * @author You
  * @url https://github.com/me/my-plugin
- * @description My plugin
+ * @plugindesc My plugin
  * @help My Plugin
  *
  * This is my plugin!
