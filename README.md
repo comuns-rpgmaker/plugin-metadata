@@ -28,9 +28,41 @@ The input file must follow the schema specified in
 [`./schema/plugin-metadata.json`](./schema/plugin-metadata.json). It accepts
 both JSON and YAML files.
 
+For instance, suppose we have the following YAML file (`plugin-metadata.yaml`):
+
+```yaml
+target: MZ
+author: You
+url: https://github.com/me/my-plugin
+description: My plugin
+help: |-
+  My Plugin
+
+  This is my plugin!
+```
+
+When we run this on the CLI (if it doesn't work, try `npm link`):
+
+    mz-mtdt -i plugin-metadata.yaml
+
+We get the following output:
+
+```js
+/*:
+ * @target MZ
+ * @author You
+ * @url https://github.com/me/my-plugin
+ * @description My plugin
+ * @help My Plugin
+ *
+ * This is my plugin!
+ */
+```
 
 ## Schema
 
 The JSON schema for the input files is available here: [plugin-metadata.json](https://raw.githubusercontent.com/comuns-rpgmaker/plugin-metadata/master/schema/plugin-metadata.json).
 
 To use it with VS Code, see [this article](https://code.visualstudio.com/docs/languages/json#_json-schemas-and-settings).
+
+
