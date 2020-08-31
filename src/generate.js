@@ -64,11 +64,9 @@ function resolveType(param) {
 }
 
 function transformParam(param, { command, parent, language }) {
-    let result = [];
+    let result = [`@${command ? 'arg' : 'param'} ${param.name}`];
 
     if (parent) result.push(`@parent ${parent}`);
-
-    result.push(`@${command ? 'arg' : 'param'} ${param.name}`);
 
     const type = resolveType(param);
     if (type) result.push(`@type ${type}`);
@@ -132,7 +130,7 @@ function transform(metadata, language) {
     if (metadata.url) result.push(`@url ${metadata.url}`);
 
     result.push(
-        `@description ${localized(metadata.description, language)}`,
+        `@plugindesc ${localized(metadata.description, language)}`,
         `@help ${localized(metadata.help, language)}`
     );
 

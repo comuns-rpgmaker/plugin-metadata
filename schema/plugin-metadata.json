@@ -11,55 +11,66 @@
       "const": "MZ"
     },
     "description": {
+      "description": "A short description of what the plugin does",
       "$ref": "#/definitions/localizedText"
     },
     "author": {
+      "description": "Name or nickname of the author of the plugin",
       "type": "string"
     },
     "url": {
+      "description": "An URL where the plugin can be found. Useful for updates",
       "type": "string",
       "format": "uri"
     },
     "languages": {
+      "description": "List of languages the metadata for this plugin supports",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "help": {
+      "description": "Plugin help, describes usage and explains features in more detail",
       "$ref": "#/definitions/localizedText"
     },
     "base": {
+      "description": "List of base plugins that this plugin depends on",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "before": {
+      "description": "List of plugins this plugin should come before on the plugin manager",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "after": {
+      "description": "List of plugins this plugin should come after on the plugin manager",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "params": {
+      "description": "Plugin parameter definitions",
       "type": "array",
       "items": {
         "$ref": "#/definitions/parameter"
       }
     },
     "commands": {
+      "description": "Plugin command definitions",
       "type": "array",
       "items": {
         "$ref": "#/definitions/command"
       }
     },
     "structs": {
+      "description": "Plugin struct definitions",
       "type": "array",
       "items": {
         "$ref": "#/definitions/struct"
@@ -75,6 +86,7 @@
   "definitions": {
     "basicParameterType": {
       "$comment": "Type for a parameter with no additional options",
+      "title": "BasicParamType",
       "type": "string",
       "enum": [
         "text",
@@ -96,6 +108,7 @@
       ]
     },
     "structType": {
+      "title": "StructType",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -108,6 +121,7 @@
       ]
     },
     "parameterType": {
+      "title": "ParamType",
       "$comment": "All parameter types, including those with additional options",
       "anyOf": [{
           "$ref": "#/definitions/basicParameterType"
@@ -129,6 +143,7 @@
       ]
     },
     "localizedText": {
+      "title": "LocalizedText",
       "$comment": "Either just a default text or a map with localized texts",
       "type": [
         "string",
@@ -149,8 +164,10 @@
       ]
     },
     "parameter": {
+      "title": "Param",
       "description": "A plugin parameter",
       "allOf": [{
+          "title": "ParamBase",
           "type": "object",
           "properties": {
             "name": {
@@ -187,6 +204,7 @@
         },
         {
           "oneOf": [{
+              "title": "BasicParam",
               "type": "object",
               "properties": {
                 "type": {
@@ -195,6 +213,7 @@
               }
             },
             {
+              "title": "NumberParam",
               "type": "object",
               "properties": {
                 "type": {
@@ -219,6 +238,7 @@
               ]
             },
             {
+              "title": "FileParam",
               "type": "object",
               "properties": {
                 "type": {
@@ -240,6 +260,7 @@
               ]
             },
             {
+              "title": "AnimationParam",
               "type": "object",
               "properties": {
                 "type": {
@@ -256,6 +277,7 @@
               ]
             },
             {
+              "title": "BooleanParam",
               "type": "object",
               "properties": {
                 "type": {
@@ -276,6 +298,7 @@
               ]
             },
             {
+              "title": "SelectParam",
               "type": "object",
               "properties": {
                 "type": {
@@ -313,6 +336,7 @@
               ]
             },
             {
+              "title": "ComboParam",
               "type": "object",
               "properties": {
                 "type": {
@@ -332,6 +356,7 @@
               ]
             },
             {
+              "title": "ArrayParam",
               "type": "object",
               "properties": {
                 "type": {
@@ -348,6 +373,7 @@
               ]
             },
             {
+              "title": "StructParam",
               "$ref": "#/definitions/structType"
             }
           ]
@@ -355,6 +381,7 @@
       ]
     },
     "struct": {
+      "title": "Struct",
       "type": "object",
       "properties": {
         "name": {
@@ -374,6 +401,7 @@
       ]
     },
     "command": {
+      "title": "Command",
       "type": "object",
       "properties": {
         "name": {
