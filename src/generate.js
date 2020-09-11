@@ -1,4 +1,5 @@
-const fs = require('fs/promises');
+const path = require('path');
+const fs = require('fs');
 
 const validate = require('./validate');
 
@@ -195,7 +196,8 @@ module.exports = async function generate(file, output) {
     });
 
     if (output) {
-        await fs.writeFile(output, result);
+        fs.mkdirSync(path.dirname(output), { recursive: true });
+        fs.writeFileSync(output, result);
         return 'OK';
     } else {
         return result;

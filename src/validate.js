@@ -1,4 +1,4 @@
-const fs = require('fs/promises');
+const fs = require('fs');
 const path = require('path')
 
 const YAML = require('yaml');
@@ -16,7 +16,7 @@ function isYAML(file)
 
 async function loadMetadata(file)
 {
-    const content = await (await fs.readFile(file)).toString();
+    const content = fs.readFileSync(file).toString();
     if (isYAML(file)) return YAML.parse(content);
     else return JSON.parse(content);
 }
