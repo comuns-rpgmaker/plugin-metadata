@@ -140,11 +140,11 @@ function transform(metadata, language) {
     }
 
     if (metadata.before) {
-        metadata.before.forEach(plugin => result.push(`@base ${plugin}`));
+        metadata.before.forEach(plugin => result.push(`@before ${plugin}`));
     }
 
     if (metadata.after) {
-        metadata.after.forEach(plugin => result.push(`@base ${plugin}`));
+        metadata.after.forEach(plugin => result.push(`@after ${plugin}`));
     }
 
     if (metadata.params) {
