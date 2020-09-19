@@ -380,11 +380,11 @@
                 {
                   "oneOf": [{
                       "items": {
-                        "$ref": "#/definitions/extendedParameterType",
-                        "required": [
-                          "items"
-                        ]
-                      }
+                        "$ref": "#/definitions/extendedParameterType"
+                      },
+                      "required": [
+                        "items"
+                      ]
                     },
                     {
                       "$ref": "#/definitions/structType"
