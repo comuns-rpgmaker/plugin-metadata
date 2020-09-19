@@ -120,7 +120,7 @@
         "struct"
       ]
     },
-    "parameterType": {
+    "extendedParameterType": {
       "title": "ParamType",
       "$comment": "All parameter types, including those with additional options",
       "anyOf": [{
@@ -136,6 +136,14 @@
             "select",
             "combo"
           ]
+        }
+      ]
+    },
+    "parameterType": {
+      "title": "ParamType",
+      "$comment": "All parameter types, including those with additional options",
+      "anyOf": [{
+          "$ref": "#/definitions/extendedParameterType"
         },
         {
           "$ref": "#/definitions/structType"
@@ -356,20 +364,33 @@
               ]
             },
             {
-              "title": "ArrayParam",
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "array"
+              "allOf": [{
+                  "title": "ArrayParam",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "array"
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ]
                 },
-                "items": {
-                  "$ref": "#/definitions/basicParameterType"
+                {
+                  "oneOf": [{
+                      "items": {
+                        "$ref": "#/definitions/extendedParameterType",
+                        "required": [
+                          "items"
+                        ]
+                      }
+                    },
+                    {
+                      "$ref": "#/definitions/structType"
+                    }
+                  ]
                 }
-              },
-              "required": [
-                "type",
-                "items"
               ]
             },
             {
@@ -419,8 +440,7 @@
         "args": {
           "type": "array",
           "items": {
-            "allOf": [
-              {
+            "allOf": [{
                 "$ref": "#/definitions/parameter"
               },
               {

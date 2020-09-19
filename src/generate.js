@@ -54,14 +54,18 @@ function additionalOptions(param, language) {
     }
 }
 
-function unitType(type) {
-    if (type && type.struct) return `struct<${type.struct}>`;
+function unitType(type, struct) {
+    if (struct) return `struct<${type}>`;
     else return type;
 }
 
 function resolveType(param) {
-    if (param.type === 'array') return `${unitType(param.items)}[]`;
-    else return unitType(param.struct || param.type);
+    if (param.type === 'array') {
+        const items = param.struct || param.items;
+        return `${unitType(items, param.struct)}[]`;
+    } else {
+        return unitType(param.struct || param.type, param.struct);
+    }
 }
 
 function transformParam(param, { command, parent, language }) {
