@@ -1,6 +1,6 @@
 {
   "name": "@comuns-rpgmaker/plugin-metadata",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Automated tool for plugin metadata schema validation and generation",
   "main": "index.js",
   "scripts": {
