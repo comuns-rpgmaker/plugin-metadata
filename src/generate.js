@@ -81,7 +81,7 @@ function transformParam(param, { command, parent, language }) {
         `@desc ${localized(param.description, language)}`
     );
 
-    if (param.default) result.push(`@default ${param.default}`);
+    if (param.default !== undefined) result.push(`@default ${JSON.stringify(param.default)}`);
 
     if (param.children) {
         param.children.forEach(child => {
@@ -198,6 +198,8 @@ module.exports = async function generate(file, output) {
         result += formatMain(tags.main, language)
             + formatStructs(tags.structs, language);
     });
+
+    result = result.replace(/(?<=[^\r])\n/g, '\r\n');
 
     if (output) {
         fs.mkdirSync(path.dirname(output), { recursive: true });

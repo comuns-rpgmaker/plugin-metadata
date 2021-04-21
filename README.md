@@ -62,6 +62,8 @@ We get the following output:
  */
 ```
 
+For more examples, see the [test cases](/test/cases).
+
 ## Schema
 
 The JSON schema for the input files is available here: [plugin-metadata.json](https://raw.githubusercontent.com/comuns-rpgmaker/plugin-metadata/master/schema/plugin-metadata.json).

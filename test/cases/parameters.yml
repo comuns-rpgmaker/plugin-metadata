@@ -1,0 +1,16 @@
+---
+target: MZ
+description: Plugin with params
+author: Me
+help: This is a simple metadata file with params.
+params:
+  - name: param1
+    text: Parameter 1
+    type: text
+    description: This is a simple parameter
+
+  - name: param2
+    text: Parameter 2
+    type: number
+    description: This is another simple parameter
+    default: 0
