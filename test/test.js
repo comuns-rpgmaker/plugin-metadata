@@ -1,4 +1,6 @@
 const fs = require('fs');
+const { promisify } = require('util');
+
 const assert = require('assert');
 
 const generate = require('../src/generate');
@@ -6,13 +8,10 @@ const generate = require('../src/generate');
 // Poor man's snapshot testing
 async function matchesExpected(name) {
     const input = `test/cases/${name}.yml`;
-    const output = `test/cases/${name}.received.out`;
+    const output = `test/cases/${name}.out.js`;
 
-    await generate(input, output);
-
-    const received = fs.readFileSync(output).toString();
-    const expected = fs.readFileSync(`test/cases/${name}.expected.out`).toString();
-
+    const received = await generate(input);
+    const expected = await promisify(fs.readFile)(output).then(it => it.toString());
     assert.strictEqual(received, expected);
 }
 
