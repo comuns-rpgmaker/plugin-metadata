@@ -1,0 +1,14 @@
+---
+target: MZ
+description: A plugin with dependencies/dependants.
+author: Me
+help: My plugin.
+base:
+  - MyCore
+  - AnotherCore
+before:
+  - SomeDependantPlugin
+  - AnotherDependantPlugin
+after:
+  - SomeOverwrittenPlugin
+  - AnotherOverwrittenPlugin

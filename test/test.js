@@ -10,6 +10,12 @@ describe("generate", () => {
         });
     });
 
+    describe("generating a metadata with parameters", () => {
+        it("should match expected", async () => {
+            await matchesExpected("parameters");
+        });
+    });
+
     describe("generating a minimal multi-language metadata", () => {
         it("should match expected", async () => {
             await matchesExpected("multi-language");
@@ -31,6 +37,18 @@ describe("generate", () => {
     describe("generating a metadata with nested parameters", () => {
         it("should match expected", async () => {
             await matchesExpected("nested");
+        });
+    });
+
+    describe("generating metadata for a plugin with dependencies", () => {
+        it("should match expected", async () => {
+            await matchesExpected("dependencies");
+        });
+    });
+
+    describe("generating metadata for a plugin with an url", () => {
+        it("should match expected", async () => {
+            await matchesExpected("url");
         });
     });
 });

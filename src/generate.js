@@ -81,7 +81,7 @@ function transformParam(param, { command, parent, language }) {
         `@desc ${localized(param.description, language)}`
     );
 
-    if (param.default) result.push(`@default ${param.default}`);
+    if (param.default !== undefined) result.push(`@default ${param.default}`);
 
     if (param.children) {
         param.children.forEach(child => {

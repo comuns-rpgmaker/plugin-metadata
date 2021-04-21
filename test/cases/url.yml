@@ -1,0 +1,6 @@
+---
+target: MZ
+description: Plugin with URL
+author: Me
+help: This is a plugin with an url.
+url: https://github.com/comuns-rpgmaker/plugin-metadata

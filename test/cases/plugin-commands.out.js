@@ -11,4 +11,8 @@
  * @type number
  * @text Argument 1
  * @desc This is a simple numeric argument to a command
+ * 
+ * @command another_command
+ * @text Another command
+ * @desc This is a simple command without arguments
  */
