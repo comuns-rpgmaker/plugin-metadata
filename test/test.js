@@ -51,6 +51,12 @@ describe("generate", () => {
             await matchesExpected("url");
         });
     });
+
+    describe("generating a metadata with array parameters", () => {
+        it("should match expected", async () => {
+            await matchesExpected("arrays");
+        });
+    });
 });
 
 // Poor man's snapshot testing
