@@ -1,0 +1,31 @@
+---
+target: MZ
+author: Me
+description: A simple plugin with structs.
+help: My plugin.
+
+params:
+    - name: struct1
+      struct: MyStruct
+      text: Struct 1
+      description: A struct.
+
+structs:
+    - name: MyStruct
+      params:
+        - name: field1
+          text: Field 1
+          description: A numeric field.
+          type: number
+
+        - name: field2
+          text: Field 2
+          description: A text field.
+          type: text
+
+    - name: AnotherStruct
+      params:
+        - name: field3
+          text: Field 3
+          description: A note field.
+          type: note 

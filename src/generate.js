@@ -199,6 +199,8 @@ module.exports = async function generate(file, output) {
             + formatStructs(tags.structs, language);
     });
 
+    result = result.replace(/(?<=[^\r])\n/g, '\r\n');
+
     if (output) {
         fs.mkdirSync(path.dirname(output), { recursive: true });
         fs.writeFileSync(output, result);

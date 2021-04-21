@@ -1,0 +1,16 @@
+---
+target: MZ
+author: Me
+
+description: A simple plugin with a command.
+help: My plugin.
+
+commands:
+    - name: my_command
+      text: My command
+      description: This is a simple command with arguments
+      args:
+        - name: arg1
+          type: number
+          text: Argument 1
+          description: This is a simple numeric argument to a command
