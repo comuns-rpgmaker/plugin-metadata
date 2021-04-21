@@ -1,0 +1,23 @@
+---
+target: MZ
+author: Me
+
+description: A simple plugin with a command.
+help: My plugin.
+
+params:
+    - name: parent1
+      text: Parent 1
+      description: This is a simple parent parameter
+      children:
+         - name: child1
+           text: Child 1
+           description: This is a simple child parameter
+
+         - name: child2
+           text: Child 2
+           description: This is a child parameter with children
+           children:
+               - name: child2_1
+                 text: Child 2.1
+                 description: This is a simple parameter...

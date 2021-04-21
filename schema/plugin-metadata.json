@@ -110,7 +110,6 @@
     "structType": {
       "title": "StructType",
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "struct": {
           "type": "string"
@@ -211,7 +210,7 @@
           ]
         },
         {
-          "oneOf": [{
+          "anyOf": [{
               "title": "BasicParam",
               "type": "object",
               "properties": {
@@ -379,8 +378,11 @@
                 },
                 {
                   "oneOf": [{
-                      "items": {
-                        "$ref": "#/definitions/extendedParameterType"
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "$ref": "#/definitions/extendedParameterType"
+                        }
                       },
                       "required": [
                         "items"

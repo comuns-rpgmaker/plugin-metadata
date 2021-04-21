@@ -1,1 +1,4 @@
 node_modules/
+test/cases/*.received.out
+.nyc_output/
+coverage/

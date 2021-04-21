@@ -1,0 +1,21 @@
+---
+target: MZ
+author: Me
+
+languages:
+    - pt
+
+description:
+    default: A simple internationalized plugin.
+    pt: Um plugin internacionalizado simples.
+
+help:
+    default: |-
+        My plugin.
+
+        This plugin does things.
+
+    pt: |-
+        Meu plugin.
+
+        Este plugin faz coisas.

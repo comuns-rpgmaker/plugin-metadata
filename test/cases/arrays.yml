@@ -1,0 +1,39 @@
+---
+target: MZ
+author: Me
+description: A simple plugin with array parameters.
+help: My plugin.
+
+params:
+    - name: array1
+      type: array
+      items: text
+      text: Array 1
+      description: An array of texts.
+
+    - name: array2
+      type: array
+      struct: MyStruct
+      text: Array 2
+      description: An array of structs.
+      default:
+        - field1: foo
+          field2: 1
+
+        - field1: bar
+          field2: 2
+          
+        - field1: baz
+          field2: 3
+
+structs:
+  - name: MyStruct
+    params:
+      - name: field1
+        text: Field 1
+        type: text
+        description: A field.
+      - name: field2
+        text: Field 2
+        type: number
+        description: Another field.
