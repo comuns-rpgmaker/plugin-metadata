@@ -1,0 +1,58 @@
+---
+target: MZ
+description: Metadata with params that have additional options.
+author: Me
+help: My plugin.
+params:
+  - name: number_param
+    text: Number param
+    type: number
+    description: A number
+    min: 0
+    max: 100
+    decimals: 2
+    default: 20.2
+
+  - name: file_param
+    text: File param
+    type: file
+    description: A file
+    dir: some_dir/
+  
+  - name: file_param_required
+    text: Required file
+    type: file
+    description: A file that is required on deployment
+    dir: another_dir/
+    require: true
+
+  - name: animation_param
+    text: Animation param
+    type: animation
+    description: An animation that is required on deployment
+    require: true
+
+  - name: boolean_param
+    text: Boolean param
+    type: boolean
+    description: A boolean
+    on: Activate
+    off: Deactivate
+
+  - name: select_param
+    text: Select param
+    type: select
+    description: A select
+    options:
+      - foo
+
+      - text: Bar
+        value: bar
+
+  - name: combo_param
+    text: Combo param
+    type: combo
+    description: A combo
+    options:
+      - foo
+      - bar

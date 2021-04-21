@@ -57,6 +57,12 @@ describe("generate", () => {
             await matchesExpected("arrays");
         });
     });
+
+    describe("generating metadata for parameters with additional options", () => {
+        it("should match expected", async () => {
+            await matchesExpected("additional-options");
+        });
+    });
 });
 
 // Poor man's snapshot testing
