@@ -7,19 +7,39 @@ function localized(str, language) {
     return str[language] || str.default || str;
 }
 
+function isPrimitive(value) {
+    return typeof value === 'string' || value instanceof String
+        || typeof value === 'number' || value instanceof Number;
+}
+
+function serialize(value) {
+    if (isPrimitive(value)) {
+        return value;
+    }
+
+    if (value instanceof Array) {
+        return `[${value.map(serialize).join(',')}]`;
+    }
+
+    return JSON.stringify(value);
+}
+
 function transformNumber(param) {
     const result = [];
 
-    if (param.min) result.push(`@min ${param.min}`);
-    if (param.max) result.push(`@max ${param.max}`);
-    if (param.decimals) result.push(`@decimals ${param.decimals}`);
+    if (param.min !== undefined) result.push(`@min ${param.min}`);
+    if (param.max !== undefined) result.push(`@max ${param.max}`);
+    if (param.decimals !== undefined) result.push(`@decimals ${param.decimals}`);
 
     return result;
 }
 
 function transformFile(param) {
-    if (param.dir) [`@dir ${param.dir}`, ...transformRequire(param)];
-    else return [];
+    const result = [];
+    
+    if (param.dir !== undefined) result.push(`@dir ${param.dir}`);
+
+    return result.concat(transformRequire(param));
 }
 
 function transformRequire(param) {
@@ -36,8 +56,12 @@ function transformBoolean(param, language) {
 
 function transformSelect(param, language) {
     return param.options.reduce((result, option) => {
-        result.push(`@option ${localized(option.text, language)}`);
-        if (option.value) result.push(`@value ${option.value}`);
+        if (typeof option === 'object' && 'text' in option) {
+            result.push(`@option ${localized(option.text, language)}`);
+            if (option.value) result.push(`@value ${serialize(option.value)}`);
+        } else {
+            result.push(`@option ${localized(option, language)}`);
+        }
         return result;
     }, []);
 }
@@ -81,7 +105,9 @@ function transformParam(param, { command, parent, language }) {
         `@desc ${localized(param.description, language)}`
     );
 
-    if (param.default !== undefined) result.push(`@default ${JSON.stringify(param.default)}`);
+    result = result.concat(additionalOptions(param, language));
+
+    if (param.default !== undefined) result.push(`@default ${serialize(param.default)}`);
 
     if (param.children) {
         param.children.forEach(child => {
